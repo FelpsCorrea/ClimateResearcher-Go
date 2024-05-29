@@ -4,6 +4,7 @@ import (
 	"crypto/tls"
 	"io/ioutil"
 	"net/http"
+	"net/url"
 
 	"github.com/valyala/fastjson"
 )
@@ -33,9 +34,10 @@ func NewWeatherAPIClient(baseURL, apiKey string) *WeatherAPIClient {
 }
 
 func (c *WeatherAPIClient) GetWeather(city string) (*WeatherClientResponseDTO, WeatherClientResponseErrorDTO) {
-	url := c.BaseURL + "/current.json?q=" + city + "&key=" + c.APIKey
 
-	print(url)
+	encodedCity := url.QueryEscape(city)
+
+	url := c.BaseURL + "/current.json?q=" + encodedCity + "&key=" + c.APIKey
 
 	req, err := http.NewRequest(http.MethodGet, url, nil)
 	if err != nil {

@@ -34,8 +34,6 @@ func NewViaCepAPIClient(baseURL string) *ViaCepAPIClient {
 func (c *ViaCepAPIClient) Get(cep string) (*ViaCepClientResponseDTO, ViaCepClientResponseErrorDTO) {
 	url := c.BaseURL + cep + "/json/"
 
-	print(url)
-
 	req, err := http.NewRequest(http.MethodGet, url, nil)
 	if err != nil {
 		return nil, ViaCepClientResponseErrorDTO{Message: err.Error(), StatusCode: http.StatusInternalServerError}
