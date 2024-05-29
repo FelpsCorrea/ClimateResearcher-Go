@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  challenge-cloudrun:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    platform: linux/amd64
+    env_file:
+      - cmd/weathersystem/.env
+    volumes:
+      - ./configs:/app/configs
+      - ./cmd/weathersystem/.env:/app/.env
