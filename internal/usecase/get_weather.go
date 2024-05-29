@@ -65,7 +65,7 @@ func (u *GetWeatherUseCase) Execute(input dto.GetWeatherInputDTO) (*dto.GetWeath
 		Fahrenheit: weather.Fahrenheit,
 		Kelvin:     weather.Kelvin,
 		Country:    weatherResponse.Country,
-		City:       weatherResponse.City,
+		City:       cepResponse.Localidade,
 	}, nil
 
 }
