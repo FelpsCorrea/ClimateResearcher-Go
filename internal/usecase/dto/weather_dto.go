@@ -11,3 +11,8 @@ type GetWeatherOutputDTO struct {
 	Country    string  `json:"country"`
 	City       string  `json:"city"`
 }
+
+type GetWeatherErrorDTO struct {
+	Message    string `json:"message"`
+	StatusCode int    `json:"status_code"`
+}
